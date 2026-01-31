@@ -1,11 +1,6 @@
 pipeline {
     agent any
 
-    tools {
-        maven 'Maven3'
-        jdk 'Java17'
-    }
-
     stages {
         stage('Checkout') {
             steps {
@@ -15,19 +10,19 @@ pipeline {
 
         stage('Build') {
             steps {
-                powershell 'mvn clean compile'
+                powershell '"C:\\Program Files\\apache-maven-3.9.9\\bin\\mvn.cmd" clean compile'
             }
         }
 
         stage('Test') {
             steps {
-                powershell 'mvn test'
+                powershell '"C:\\Program Files\\apache-maven-3.9.9\\bin\\mvn.cmd" test'
             }
         }
 
         stage('Package') {
             steps {
-                powershell 'mvn package'
+                powershell '"C:\\Program Files\\apache-maven-3.9.9\\bin\\mvn.cmd" package'
             }
         }
     }
